@@ -1,0 +1,26 @@
+Project:
+ In this project we try to define a path made up of (x,y) points that the car will visit sequentially every .02 seconds.
+
+Flow:
+A) Start the vehicle from current (middle) lane and rise to the max allwoed speed limit
+B) Continue on the same lane.
+C) (i)  If we encounter a car before us
+		(1) Reduce speed gradually
+		(2) Iterate through sensor data of all cars in the vicinity
+		(3) Check right lane and left lane to see if we can shift lane and decide on a target lane (left or right)
+		(4) If unable to decide a target lane, continue in the same lane with reduced speed and try again in next iteration
+		(4) If there are no cars in the target lane in vicinity, shift lane, increase speed and continue
+D) (ii) Else Continue
+
+Rubrics Points - Valid Trajectory Criteria:
+A) The car is able to drive at least 4.32 miles without incident - Yes
+
+B) The car drives according to the speed limit. - Set a maximum speed of 49.5
+
+C) Max Acceleration and Jerk are not Exceeded. - Total acceleration/deceleration is set at 5 m/s^2 steps ensuring smooth rise/fall in drive speed
+
+D) Car does not have collisions. - Smooth acceleration/deceleration and constant monitoring of environment takes care of this.
+
+E) The car stays in its lane, except for the time between changing lanes. - Unless the current lane is obstructed, we do not attempt to lane change
+
+F) The car is able to change lanes - Yes, only when needed to do so and after checking the target lane for clear path to proceed.
